@@ -3,22 +3,21 @@
 class Model
 {
 	public static $localEntityManager;
-	public function __construct()
-	{
-		// берём из локальной переменной файла web/application/config/doctrine-config.php
-		global $entityManager;
-		self::$localEntityManager = $entityManager;
-	}
 
 	// метод выборки данных
-	public function get_data()
+	static public function list()
 	{
-		// todo
+		$repository = self::$localEntityManager->getRepository(get_called_class());
+		return $repository->findAll();
 	}
 
+	// сохранение отдельной записи
 	public function save()
 	{
-		self::$localEntityManager->persist($this);
-		self::$localEntityManager->flush();
+		$this->$localEntityManager->persist($this);
+		$this->$localEntityManager->flush();
 	}
 }
+
+// установка $entityManager как глобальной, чтобы её видели все методы класса
+Model::$localEntityManager = $entityManager;

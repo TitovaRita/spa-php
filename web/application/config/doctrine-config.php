@@ -15,9 +15,10 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/../models
 
 // database configuration parameters
 $conn = array(
-    'driver' => 'pdo_sqlite',
-    'path' => __DIR__ . '/db.sqlite',
+    'url' => $_SERVER['DATABASE_URL'],
+    'driver' => 'pdo_pgsql'
 );
 
 // obtaining the entity manager
+global $entityManager;
 $entityManager = EntityManager::create($conn, $config);

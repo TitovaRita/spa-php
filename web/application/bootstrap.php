@@ -1,5 +1,9 @@
 <?php
 
+// подключаем .env файл
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
 // Подключение php ORM Doctrine
 require_once 'config/doctrine-config.php';
 
@@ -13,19 +17,5 @@ $files = glob(__DIR__ . '/models/*.php');
 foreach ($files as $file) {
     require($file);
 }
-
-/*
-Здесь обычно подключаются дополнительные модули, реализующие различный функционал:
-	> аутентификацию
-	> кеширование
-	> работу с формами
-	> абстракции для доступа к данным
-	> ORM
-	> Unit тестирование
-	> Benchmarking
-	> Работу с изображениями
-	> Backup
-	> и др.
-*/
 
 require_once 'core/router.php';

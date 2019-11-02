@@ -1,8 +1,10 @@
 <?php
 
 // подключаем .env файл
-$dotenv = Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
+if (file_exists('application/.env')) {
+  $dotenv = Dotenv\Dotenv::create(__DIR__);
+  $dotenv->load();
+}
 
 // Подключение php ORM Doctrine
 require_once 'config/doctrine-config.php';

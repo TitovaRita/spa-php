@@ -1,13 +1,13 @@
 {
   "require" : {
     "doctrine/orm": "^2.6.2",
-    "symfony/yaml": "2.*",
-    "vlucas/phpdotenv": "^3.6"
+    "symfony/yaml": "2.*"
   },
   "autoload": {
     "psr-0": {"": "src/"}
   },
   "require-dev": {
-    "heroku/heroku-buildpack-php": "*"
+    "heroku/heroku-buildpack-php": "*",
+    "vlucas/phpdotenv": "^3.6"
   }
 }

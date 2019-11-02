@@ -4,8 +4,7 @@ class UsersController extends Controller
 {
 	function index()
 	{
-		print_r(User::list());
-		$this->view->generate('main_view.php', 'template_view.php');
+		$this->view->generate('main_view.php', 'template_view.php', User::list());
 	}
 
 	function create() {

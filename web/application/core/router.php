@@ -113,11 +113,11 @@ final class Router
             self::ErrorPage404();
         }
 
-				echo $controller;
+				// echo $controller;
 				$controller = new $controller;
         if (method_exists($controller, $action)) {
             // вызываем действие контроллера
-						echo $action;
+						// echo $action;
             $controller->$action();
         } else {
             self::ErrorPage404();

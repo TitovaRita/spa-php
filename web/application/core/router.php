@@ -12,7 +12,7 @@ final class Router
 
         $routes = array(
               // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
-              '/' => 'MainController/index' // главная страница
+              '/' => 'UsersController/index' // главная страница
               // '/contacts' => 'MainController/contacts', // страница контактов
               // '/blog' => 'BlogController/index', // список постов блога
               // '/blog/:num' => 'BlogController/viewPost/$1' // просмотр отдельного поста, например, /blog/123

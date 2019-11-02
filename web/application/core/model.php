@@ -2,19 +2,23 @@
 
 class Model
 {
-	
-	/*
-		Модель обычно включает методы выборки данных, это могут быть:
-			> методы нативных библиотек pgsql или mysql;
-			> методы библиотек, реализующих абстракицю данных. Например, методы библиотеки PEAR MDB2;
-			> методы ORM;
-			> методы для работы с NoSQL;
-			> и др.
-	*/
+	public static $localEntityManager;
+	public function __construct()
+	{
+		// берём из локальной переменной файла web/application/config/doctrine-config.php
+		global $entityManager;
+		self::$localEntityManager = $entityManager;
+	}
 
 	// метод выборки данных
 	public function get_data()
 	{
 		// todo
+	}
+
+	public function save()
+	{
+		self::$localEntityManager->persist($this);
+		self::$localEntityManager->flush();
 	}
 }

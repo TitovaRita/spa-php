@@ -12,7 +12,12 @@ final class Router
 
         $routes = array(
               // 'url' => 'контроллер/действие/параметр1/параметр2/параметр3'
-              '/' => 'UsersController/index' // главная страница
+              '/' => 'UsersController/index', // главная страница
+              '/users/new' => 'UsersController/new',
+              '/users/create' => 'UsersController/create',
+              '/users/edit' => 'UsersController/edit',
+              '/users/update' => 'UsersController/update',
+              '/users/delete' => 'UsersController/delete',
               // '/contacts' => 'MainController/contacts', // страница контактов
               // '/blog' => 'BlogController/index', // список постов блога
               // '/blog/:num' => 'BlogController/viewPost/$1' // просмотр отдельного поста, например, /blog/123
@@ -62,11 +67,10 @@ final class Router
         if ($requestedUrl === null) {
             $ar = explode('?', $_SERVER["REQUEST_URI"]);
             $uri = reset($ar);
-            $requestedUrl = urldecode('/');
+            $requestedUrl = urldecode($uri);
         }
 
         self::$requestedUrl = $requestedUrl;
-
         // если URL и маршрут полностью совпадают
         if (isset(self::$routes[$requestedUrl])) {
             self::$params = self::splitUrl(self::$routes[$requestedUrl]);
@@ -113,11 +117,12 @@ final class Router
             self::ErrorPage404();
         }
 
-				// echo $controller;
-				$controller = new $controller;
+        // echo $controller;
+        $controller = new $controller;
         if (method_exists($controller, $action)) {
             // вызываем действие контроллера
-						// echo $action;
+            // echo "#";
+            // echo $action;
             $controller->$action();
         } else {
             self::ErrorPage404();

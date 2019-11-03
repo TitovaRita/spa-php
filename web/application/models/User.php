@@ -13,24 +13,17 @@ class User extends Model
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
    */
-    protected $id;
+    public $id;
     /**
      * @ORM\Column(type="string")
      */
-    protected $name;
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+    public $first_name;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $last_name;
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $email;
 }

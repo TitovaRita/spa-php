@@ -2,21 +2,51 @@
 
 class Model
 {
-	public static $localEntityManager;
+    public static $localEntityManager;
 
-	// метод выборки данных
-	static public function list()
-	{
-		$repository = self::$localEntityManager->getRepository(get_called_class());
-		return $repository->findAll();
-	}
+		public function __construct($params = array())
+    {
+				foreach ($params as $key => $value) {
+						$this->$key = $value;
+				}
+    }
 
-	// сохранение отдельной записи
-	public function save()
-	{
-		$this->$localEntityManager->persist($this);
-		$this->$localEntityManager->flush();
-	}
+    // метод выборки данных
+    public static function list()
+    {
+        $repository = self::$localEntityManager->getRepository(get_called_class());
+        return $repository->findBy(array(), array('id' => 'DESC'));
+    }
+
+		// Поиск одной записи
+		public static function find($id)
+    {
+				return self::$localEntityManager->find(get_called_class(), $id);
+    }
+
+    // сохранение отдельной записи
+    public function save()
+    {
+        self::$localEntityManager->persist($this);
+        self::$localEntityManager->flush();
+    }
+
+		// Обновление записи
+		public function update_attributes($attributes)
+		{
+				foreach ($attributes as $key => $value) {
+						$this->$key = $value;
+				}
+				self::$localEntityManager->merge($this);
+				self::$localEntityManager->flush();
+		}
+
+		// Удаление записи
+		public function destroy()
+    {
+        self::$localEntityManager->remove($this);
+        self::$localEntityManager->flush();
+    }
 }
 
 // установка $entityManager как глобальной, чтобы её видели все методы класса

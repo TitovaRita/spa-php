@@ -9,10 +9,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class User extends Model
 {
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

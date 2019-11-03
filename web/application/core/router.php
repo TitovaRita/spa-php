@@ -18,7 +18,12 @@ final class Router
               '/users/edit' => 'UsersController/edit',
               '/users/update' => 'UsersController/update',
               '/users/delete' => 'UsersController/delete',
-              // '/contacts' => 'MainController/contacts', // страница контактов
+              '/users/:num/posts' => 'PostsController/index/$1',
+              '/users/:num/posts/new' => 'PostsController/new/$1',
+              '/users/:num/posts/create' => 'PostsController/create/$1',
+              '/users/:num/posts/edit' => 'PostsController/edit/$1',
+              '/users/:num/posts/update' => 'PostsController/update/$1',
+              '/users/:num/posts/delete' => 'PostsController/delete/$1'
               // '/blog' => 'BlogController/index', // список постов блога
               // '/blog/:num' => 'BlogController/viewPost/$1' // просмотр отдельного поста, например, /blog/123
               // '/blog/:any/:num' => 'BlogController/$1/$2' // действия над постом, например, /blog/edit/123 или /blog/dеlete/123
@@ -123,7 +128,13 @@ final class Router
             // вызываем действие контроллера
             // echo "#";
             // echo $action;
-            $controller->$action();
+            // echo "?";
+            // print_r($params);
+            if (empty($params)) {
+                $controller->$action();
+            } else {
+                $controller->$action($params);
+            }
         } else {
             self::ErrorPage404();
         }

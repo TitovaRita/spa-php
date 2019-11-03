@@ -24,6 +24,7 @@
           <td><?php echo($key->last_name); ?></td>
           <td><?php echo($key->email); ?></td>
           <td class="text-center">
+            <a href="/users/<?php echo($key->id); ?>/posts" class="btn btn-success">Посты</a>
             <a href="/users/edit?id=<?php echo($key->id); ?>" class="btn btn-warning">Редактировать</a>
             <a href="/users/delete?id=<?php echo($key->id); ?>" class="btn btn-danger">Удалить</a>
           </td>

@@ -11,6 +11,13 @@ class Model
 				}
     }
 
+		public function set_params($params = array())
+    {
+				foreach ($params as $key => $value) {
+						$this->$key = $value;
+				}
+    }
+
     // метод выборки данных
     public static function list()
     {

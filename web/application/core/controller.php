@@ -9,10 +9,4 @@ class Controller
     {
         $this->view = new View();
     }
-
-    // действие (action), вызываемое по умолчанию
-    public function index()
-    {
-        // todo
-    }
 }

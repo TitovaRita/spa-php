@@ -8,7 +8,7 @@
   <table class="table table-hover text-left">
     <thead>
       <tr>
-        <th>#</th>
+        <th>№</th>
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Email</th>
